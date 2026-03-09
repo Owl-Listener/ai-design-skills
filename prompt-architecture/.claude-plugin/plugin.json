@@ -1,0 +1,6 @@
+{
+  "name": "prompt-architecture",
+  "description": "Structure prompts as design artefacts — system prompts, templates, chains, and reusable patterns.",
+  "skills": "../skills",
+  "commands": "../commands"
+}

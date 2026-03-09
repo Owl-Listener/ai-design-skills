@@ -1,0 +1,6 @@
+{
+  "name": "model-interaction-design",
+  "description": "Design how humans and AI models communicate — conversation patterns, turn-taking, mixed-initiative flows, and generative UI.",
+  "skills": "../skills",
+  "commands": "../commands"
+}

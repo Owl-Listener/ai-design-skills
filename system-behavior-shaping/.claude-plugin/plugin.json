@@ -1,0 +1,6 @@
+{
+  "name": "system-behavior-shaping",
+  "description": "Craft AI personality, tone, persona, and behavioral consistency across contexts.",
+  "skills": "../skills",
+  "commands": "../commands"
+}

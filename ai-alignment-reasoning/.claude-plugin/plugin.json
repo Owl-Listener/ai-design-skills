@@ -1,0 +1,6 @@
+{
+  "name": "ai-alignment-reasoning",
+  "description": "Design guardrails, safety boundaries, value alignment, and ethical constraints into AI products.",
+  "skills": "../skills",
+  "commands": "../commands"
+}

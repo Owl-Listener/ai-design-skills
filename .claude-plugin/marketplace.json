@@ -1,0 +1,12 @@
+{
+  "name": "AI Design Skills Collection",
+  "description": "Agentic skills, commands, and plugins for designing AI products — from interaction patterns to alignment, evaluation, agent orchestration, and prompt architecture.",
+  "plugins": [
+    "model-interaction-design",
+    "ai-alignment-reasoning",
+    "system-behavior-shaping",
+    "evaluation",
+    "design-agent-orchestration",
+    "prompt-architecture"
+  ]
+}

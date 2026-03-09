@@ -1,0 +1,51 @@
+---
+description: Create a human oversight plan for an agentic system.
+argument-hint: "[agentic system or AI workflow to design oversight for]"
+---
+You are designing human oversight for an agentic system. Use only skills from the design-agent-orchestration plugin.
+Follow this process:
+## Step 1: Assess the System
+- What does this agentic system do?
+- What actions can it take autonomously?
+- What are the highest-stakes actions?
+- Who are the users and who are affected by the system's actions?
+## Step 2: Map Intervention Points
+Using **human-in-the-loop**:
+- Identify every point in the workflow where human intervention could occur
+- For each point, assess: what are the stakes? What's the cost of intervention? What's the cost of NOT intervening?
+- Prioritise: which intervention points are mandatory vs. optional?
+- Design the intervention interface for each mandatory point
+## Step 3: Design Approval Gates
+Using **human-in-the-loop**:
+- For high-stakes actions, design approval gates
+- Specify what information the human needs to make the decision
+- Define time constraints and timeout behaviors
+- Design batch approval for high-volume, lower-stakes actions
+## Step 4: Design Monitoring
+Using **observability-design**:
+- Define what the oversight team needs to see in real time
+- Design monitoring dashboards for system health, quality, and safety
+- Define alert thresholds for anomalies
+- Specify escalation protocols for detected issues
+## Step 5: Design Override Capabilities
+Using **human-in-the-loop** and **failure-recovery**:
+- Define how humans can stop the system immediately
+- Design rollback capabilities for recent actions
+- Specify how to redirect the system mid-workflow
+- Define emergency procedures for critical failures
+## Step 6: Plan for Graduated Autonomy
+Using **human-in-the-loop**:
+- Define the starting level of human oversight
+- Specify criteria for reducing oversight (performance metrics, time period, incident rate)
+- Define triggers for increasing oversight (failures, complaints, changed conditions)
+- Create an autonomy roadmap showing planned oversight evolution
+## Output
+Deliver a complete human oversight plan:
+1. System assessment and risk profile
+2. Intervention point map with priority ratings
+3. Approval gate specifications
+4. Monitoring dashboard specifications
+5. Override and emergency procedures
+6. Graduated autonomy roadmap
+7. Oversight team roles and responsibilities
+8. Oversight quality metrics (how to evaluate the oversight itself)
