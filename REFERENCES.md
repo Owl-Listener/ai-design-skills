@@ -41,4 +41,3 @@ Research papers, practitioner resources, and design guidebooks that informed the
 ## Research Gap
 A consistent finding across the literature: nearly all existing work on these topics is written by and for engineers. The papers frame AI interaction, alignment, evaluation, and orchestration as technical problems with technical solutions.
 This collection fills the gap by reframing these topics as **design work** — with the vocabulary, workflows, artefacts, and practitioner skills that let designers own these competencies rather than deferring to engineering.
-EOF
