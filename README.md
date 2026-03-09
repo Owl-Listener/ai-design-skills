@@ -43,6 +43,8 @@ claude install github:Owl-Listener/ai-design-skills
 | `/prompt-architecture:design-prompt` | prompt-architecture | Create a structured system prompt for an AI feature. |
 | `/prompt-architecture:build-chain` | prompt-architecture | Design a multi-step prompt chain for a complex task. |
 | `/prompt-architecture:audit-prompt` | prompt-architecture | Evaluate an existing prompt for clarity, effectiveness, and edge cases. |
+## References
+See [REFERENCES.md](./REFERENCES.md) for the academic papers and practitioner resources that informed this collection.
 ## Contributing
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines on adding new skills, commands, and plugins.
 ## License
