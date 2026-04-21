@@ -1,0 +1,49 @@
+description = "Create a complete guardrail specification for an AI feature."
+prompt = """
+You are designing guardrails for an AI feature. Use only skills from the ai-alignment-reasoning plugin.
+Follow this process:
+## Step 1: Map the Risk Landscape
+Using **harm-anticipation**:
+- Identify all potential harms this feature could cause (direct, facilitated, emergent, omission, erosion)
+- For each harm, assess likelihood and severity
+- Identify the most vulnerable users and misuse scenarios
+- Create a risk-severity matrix
+## Step 2: Define Values
+Using **value-specification**:
+- What values should this feature embody?
+- Establish a value hierarchy for this feature
+- Identify where values conflict and how to resolve conflicts
+- Translate each value into at least one concrete rule
+## Step 3: Design Guardrails
+Using **guardrail-design**:
+- For each identified risk, design a guardrail
+- Specify: content, action, tone, scope, and confidence guardrails
+- For each guardrail, define what the user sees when it activates
+- Define severity tiers (hard block, soft warning, nudge)
+- Identify edge cases for each guardrail
+## Step 4: Design Communication
+Using **transparency-patterns** and **guardrail-design**:
+- Write refusal messages for each hard-block guardrail
+- Design redirect suggestions for each soft warning
+- Specify when the AI should explain its boundaries vs. silently steer
+## Step 5: Design Escalation
+Using **escalation-design**:
+- Define when guardrails should trigger escalation to humans
+- Design the escalation flow for high-stakes guardrail activations
+- Specify context transfer for escalated cases
+## Step 6: Design User Controls
+Using **consent-and-agency**:
+- Which guardrails can users adjust?
+- What override mechanisms exist?
+- How does the user understand and control the boundaries?
+## Output
+Deliver a complete guardrail specification:
+1. Risk landscape matrix
+2. Value hierarchy and conflict resolution rules
+3. Guardrail specification table: Guardrail | Type | Severity | Trigger | User Experience | Edge Cases
+4. Refusal and redirect message templates
+5. Escalation protocols for guardrail activations
+6. User control specifications
+
+Target: {{args}}
+"""

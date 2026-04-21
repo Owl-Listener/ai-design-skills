@@ -1,0 +1,6 @@
+{
+  "name": "system-behavior-shaping",
+  "version": "1.0.0",
+  "description": "Craft AI personality, tone, persona, and behavioral consistency across contexts.",
+  "contextFileName": "GEMINI.md"
+}

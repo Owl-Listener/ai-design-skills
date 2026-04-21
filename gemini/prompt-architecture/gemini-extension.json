@@ -1,0 +1,6 @@
+{
+  "name": "prompt-architecture",
+  "version": "1.0.0",
+  "description": "Structure prompts as design artefacts \u2014 system prompts, templates, chains, and reusable patterns.",
+  "contextFileName": "GEMINI.md"
+}

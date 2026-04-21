@@ -1,6 +1,6 @@
 # AI Design Skills Collection
 Agentic skills, commands, and plugins for designing AI products — from interaction patterns to alignment, evaluation, agent orchestration, and prompt architecture.
-**42 skills** and **18 commands** across **6 plugins** for [Claude Code](https://docs.anthropic.com/en/docs/claude-code).
+**42 skills** and **18 commands** across **6 plugins** — available for [Claude Code](https://docs.anthropic.com/en/docs/claude-code) and [Gemini CLI](https://github.com/google-gemini/gemini-cli) (see [`gemini/`](./gemini)).
 ## Plugins
 | Plugin | Skills | Commands | Description |
 |--------|--------|----------|-------------|
@@ -43,6 +43,8 @@ claude install github:Owl-Listener/ai-design-skills
 | `/prompt-architecture:design-prompt` | prompt-architecture | Create a structured system prompt for an AI feature. |
 | `/prompt-architecture:build-chain` | prompt-architecture | Design a multi-step prompt chain for a complex task. |
 | `/prompt-architecture:audit-prompt` | prompt-architecture | Evaluate an existing prompt for clarity, effectiveness, and edge cases. |
+## Gemini CLI
+A parallel port for [Gemini CLI](https://github.com/google-gemini/gemini-cli) lives in [`gemini/`](./gemini) — same six plugins, same skills, commands translated to TOML. See [`gemini/README.md`](./gemini/README.md) for install instructions.
 ## References
 See [REFERENCES.md](./REFERENCES.md) for the academic papers and practitioner resources that informed this collection.
 ## Contributing

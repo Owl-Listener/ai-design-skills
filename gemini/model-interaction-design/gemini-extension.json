@@ -1,0 +1,6 @@
+{
+  "name": "model-interaction-design",
+  "version": "1.0.0",
+  "description": "Design how humans and AI models communicate \u2014 conversation patterns, turn-taking, mixed-initiative flows, and generative UI.",
+  "contextFileName": "GEMINI.md"
+}

@@ -1,0 +1,57 @@
+description = "Evaluate an existing prompt for clarity, effectiveness, and edge cases."
+prompt = """
+You are auditing an existing prompt. Use only skills from the prompt-architecture plugin.
+Follow this process:
+## Step 1: Structural Analysis
+Using **system-prompt-structure**:
+- Does the prompt have clear, separated sections?
+- Is identity/role defined clearly?
+- Are behavioral rules explicit and non-contradictory?
+- Are output specifications concrete?
+- Is the most important content at the beginning?
+- Score structure quality (1-5)
+## Step 2: Constraint Analysis
+Using **constraint-specification**:
+- Are constraints specific and measurable?
+- Are there constraint conflicts?
+- Is there a clear priority hierarchy?
+- Are there missing constraints that should be added?
+- Score constraint quality (1-5)
+## Step 3: Example Analysis
+Using **few-shot-patterns**:
+- Are there examples? Are there enough?
+- Do examples demonstrate the right behavior?
+- Are examples diverse and high-quality?
+- Do examples match the stated constraints?
+- Score example quality (1-5)
+## Step 4: Context Analysis
+Using **context-engineering**:
+- Is the context budget well-allocated?
+- Is information ordered effectively?
+- Is there unnecessary content consuming context space?
+- Are context injection points well-designed?
+- Score context design quality (1-5)
+## Step 5: Edge Case Testing
+Generate 5 challenging inputs and predict how the prompt would handle them:
+- An ambiguous request
+- A request at the boundary of the prompt's scope
+- A very simple request (is the prompt over-engineered for simple cases?)
+- A very complex request (does the prompt handle complexity?)
+- An adversarial or tricky request
+## Step 6: Versioning Assessment
+Using **prompt-versioning**:
+- Is the prompt versioned and tracked?
+- Is there documentation for why it's written this way?
+- Are there test cases?
+- Is there a review process?
+## Output
+Deliver a prompt audit report:
+1. Overall quality score (1-5) with justification
+2. Section-by-section analysis with scores
+3. Issues found: Issue | Severity | Category | Recommendation
+4. Edge case analysis with predicted behavior
+5. Top 5 improvements ranked by expected impact
+6. Rewritten prompt (improved version) if significant changes are needed
+
+Target: {{args}}
+"""

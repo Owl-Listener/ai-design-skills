@@ -48,5 +48,12 @@ A plugin is a collection of related skills and commands.
 - All content should be written from a design perspective, not an engineering perspective.
 - Use British English spelling conventions (artefact, colour, organisation).
 - Keep the MIT license on all contributions.
+## Gemini CLI port
+The `gemini/` directory mirrors each Claude Code plugin as a Gemini CLI extension:
+- `gemini/<plugin>/gemini-extension.json` — manifest.
+- `gemini/<plugin>/GEMINI.md` — context file; `@`-includes every skill.
+- `gemini/<plugin>/skills/<name>/SKILL.md` — skill content (copied verbatim from the Claude plugin).
+- `gemini/<plugin>/commands/<name>.toml` — command translated from the Claude `.md` frontmatter form.
+When adding or editing skills/commands, update both sides. Command bodies should stay prose-identical; the only Gemini-specific change is the TOML wrapper plus a trailing `Target: {{args}}` line.
 ## Code of Conduct
 Be kind, be constructive, be design-minded.
