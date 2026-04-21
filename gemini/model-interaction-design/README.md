@@ -4,11 +4,15 @@ Design how humans and AI models communicate — conversation patterns, turn-taki
 
 ## Install
 
+Clone the monorepo and install this extension from its local path:
+
 ```bash
-gemini extensions install https://github.com/Owl-Listener/ai-design-skills --path gemini/model-interaction-design
+git clone https://github.com/Owl-Listener/ai-design-skills
+cd ai-design-skills
+gemini extensions install ./gemini/model-interaction-design
 ```
 
-Or clone the repo and link locally:
+For development, symlink instead:
 
 ```bash
 gemini extensions link ./gemini/model-interaction-design
@@ -16,20 +20,22 @@ gemini extensions link ./gemini/model-interaction-design
 
 ## Skills
 
-| Skill | Location |
-|-------|----------|
-| context-window-design | see `skills/context-window-design/SKILL.md` |
-| conversation-patterns | see `skills/conversation-patterns/SKILL.md` |
-| feedback-loops | see `skills/feedback-loops/SKILL.md` |
-| generative-ui | see `skills/generative-ui/SKILL.md` |
-| mixed-initiative-flow | see `skills/mixed-initiative-flow/SKILL.md` |
-| multimodal-orchestration | see `skills/multimodal-orchestration/SKILL.md` |
-| progressive-disclosure | see `skills/progressive-disclosure/SKILL.md` |
+| Skill | File |
+|-------|------|
+| context-window-design | `skills/context-window-design/SKILL.md` |
+| conversation-patterns | `skills/conversation-patterns/SKILL.md` |
+| feedback-loops | `skills/feedback-loops/SKILL.md` |
+| generative-ui | `skills/generative-ui/SKILL.md` |
+| mixed-initiative-flow | `skills/mixed-initiative-flow/SKILL.md` |
+| multimodal-orchestration | `skills/multimodal-orchestration/SKILL.md` |
+| progressive-disclosure | `skills/progressive-disclosure/SKILL.md` |
 
 ## Commands
 
-| Command | Location |
-|---------|----------|
-| `/model-interaction-design:audit-interaction` | see `commands/audit-interaction.toml` |
-| `/model-interaction-design:design-conversation` | see `commands/design-conversation.toml` |
-| `/model-interaction-design:map-initiative` | see `commands/map-initiative.toml` |
+Invoke from within Gemini CLI:
+
+| Command | File |
+|---------|------|
+| `/model-interaction-design:audit-interaction` | `commands/audit-interaction.toml` |
+| `/model-interaction-design:design-conversation` | `commands/design-conversation.toml` |
+| `/model-interaction-design:map-initiative` | `commands/map-initiative.toml` |
