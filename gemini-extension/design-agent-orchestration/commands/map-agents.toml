@@ -1,0 +1,50 @@
+description = "Map out agent responsibilities, boundaries, and communication patterns."
+prompt = """
+You are mapping the agent architecture of a multi-agent system. Use only skills from the design-agent-orchestration plugin.
+Follow this process:
+## Step 1: Inventory the Agents
+List every agent in the system (or planned for the system):
+- What is each agent called?
+- What is its stated purpose?
+- What tools and data does it have access to?
+## Step 2: Define Roles Formally
+Using **agent-role-design**:
+- For each agent, create a complete role card
+- Identify role patterns (specialist, router, orchestrator, validator, fallback)
+- Check for gaps: are there tasks no agent covers?
+- Check for overlaps: do multiple agents claim the same territory?
+## Step 3: Map Communication Patterns
+Using **handoff-protocols**:
+- Draw the communication graph: which agents talk to which?
+- For each connection, define the handoff protocol
+- Identify one-way vs. bidirectional communication
+- Find bottlenecks: agents that everything flows through
+## Step 4: Map Authority and Autonomy
+Using **agent-role-design** and **human-in-the-loop**:
+- For each agent, map autonomy level: full, supervised, advisory, passive
+- Identify which agents can make decisions independently
+- Map where human approval is required
+- Check that authority matches stakes
+## Step 5: Analyse Dependencies
+Using **state-management** and **task-decomposition**:
+- Map data dependencies between agents
+- Identify critical paths where one agent blocks others
+- Find circular dependencies
+- Assess the impact of each agent failing on the rest of the system
+## Step 6: Identify Risks
+Using **failure-recovery**:
+- For each agent, what happens if it fails?
+- For each communication link, what happens if it breaks?
+- Identify single points of failure
+- Assess cascading failure risk
+## Output
+Deliver a complete agent map:
+1. Agent inventory with role cards
+2. Communication graph with handoff protocols
+3. Authority and autonomy matrix
+4. Dependency analysis with critical paths
+5. Risk assessment with single points of failure
+6. Recommendations for architecture improvements
+
+Target: {{args}}
+"""

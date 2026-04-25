@@ -1,0 +1,52 @@
+description = "Create a structured system prompt for an AI feature."
+prompt = """
+You are designing a system prompt. Use only skills from the prompt-architecture plugin.
+Follow this process:
+## Step 1: Define Requirements
+- What is this AI feature for?
+- Who are the users?
+- What should the AI do? What should it NOT do?
+- What output format and quality is expected?
+## Step 2: Structure the Prompt
+Using **system-prompt-structure**:
+- Write the Identity and Role section
+- Write the Context and Knowledge section
+- Write the Behavioral Rules section
+- Write the Output Specifications section
+- Ensure sections are clearly separated and ordered by importance
+## Step 3: Design Constraints
+Using **constraint-specification**:
+- Define format constraints (output structure, required fields)
+- Define length constraints (word count ranges, section proportions)
+- Define content constraints (topics to include/exclude, source restrictions)
+- Define tone constraints (formality, voice, audience)
+- Define quality constraints (accuracy, completeness, actionability)
+- Establish constraint priority hierarchy
+## Step 4: Add Examples
+Using **few-shot-patterns**:
+- Create 2-3 input-output examples demonstrating ideal behavior
+- Include one common case and one edge case
+- Ensure examples are high quality and consistent with the constraints
+## Step 5: Design Context Integration
+Using **context-engineering**:
+- Define where retrieved context will be injected
+- Specify context selection criteria
+- Allocate the context budget across sections
+- Design the information architecture within the prompt
+## Step 6: Plan for Iteration
+Using **prompt-versioning**:
+- Document the rationale for key design decisions
+- Define test cases for evaluating the prompt
+- Establish the review and deployment process
+## Output
+Deliver a complete system prompt package:
+1. The system prompt itself (ready to use)
+2. Prompt design rationale document
+3. Constraint specification
+4. Example library (2-3 examples)
+5. Context integration specification
+6. Test cases for validation
+7. Version notes (v1.0)
+
+Target: {{args}}
+"""
