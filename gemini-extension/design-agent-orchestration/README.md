@@ -9,13 +9,13 @@ Clone the monorepo and install this extension from its local path:
 ```bash
 git clone https://github.com/Owl-Listener/ai-design-skills
 cd ai-design-skills
-gemini extensions install ./gemini/design-agent-orchestration
+gemini extensions install ./gemini-extension/design-agent-orchestration
 ```
 
 For development, symlink instead:
 
 ```bash
-gemini extensions link ./gemini/design-agent-orchestration
+gemini extensions link ./gemini-extension/design-agent-orchestration
 ```
 
 ## Skills

@@ -9,13 +9,13 @@ Clone the monorepo and install this extension from its local path:
 ```bash
 git clone https://github.com/Owl-Listener/ai-design-skills
 cd ai-design-skills
-gemini extensions install ./gemini/ai-alignment-reasoning
+gemini extensions install ./gemini-extension/ai-alignment-reasoning
 ```
 
 For development, symlink instead:
 
 ```bash
-gemini extensions link ./gemini/ai-alignment-reasoning
+gemini extensions link ./gemini-extension/ai-alignment-reasoning
 ```
 
 ## Skills

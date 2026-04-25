@@ -20,30 +20,41 @@ Pick the install command for your agent.
 
 ### Claude Code
 
-Install all plugins:
+Add the marketplace, then install plugins from it.
 
 ```bash
-claude install github:Owl-Listener/ai-design-skills
+claude plugin marketplace add Owl-Listener/ai-design-skills
+claude plugin install model-interaction-design@ai-design-skills
 ```
 
-Install a single plugin:
+To install all six plugins at once:
 
 ```bash
-claude install github:Owl-Listener/ai-design-skills/model-interaction-design
+for p in model-interaction-design ai-alignment-reasoning system-behavior-shaping evaluation design-agent-orchestration prompt-architecture; do
+  claude plugin install "$p@ai-design-skills"
+done
 ```
 
 ### Gemini CLI
 
-Install all plugins:
+Gemini CLI installs one extension per directory and expects the manifest at the install source's root, so for this monorepo, clone and install each extension from its local path.
 
 ```bash
-gemini extensions install https://github.com/Owl-Listener/ai-design-skills
+git clone https://github.com/Owl-Listener/ai-design-skills
+cd ai-design-skills
+gemini extensions install ./gemini-extension/model-interaction-design
 ```
 
-Install a single plugin:
+To install all six:
 
 ```bash
-gemini extensions install https://github.com/Owl-Listener/ai-design-skills --path gemini/model-interaction-design
+for ext in gemini-extension/*/; do gemini extensions install "./$ext"; done
+```
+
+For development (symlink instead of copy, so edits take effect immediately):
+
+```bash
+gemini extensions link ./gemini-extension/model-interaction-design
 ```
 
 Both agents load skills the same way: each skill has a `description` field in its frontmatter, the agent matches your wording against those descriptions, and the relevant skill loads automatically. You do not pick the skill — the agent does.

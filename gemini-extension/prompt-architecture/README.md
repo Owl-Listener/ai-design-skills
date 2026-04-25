@@ -9,13 +9,13 @@ Clone the monorepo and install this extension from its local path:
 ```bash
 git clone https://github.com/Owl-Listener/ai-design-skills
 cd ai-design-skills
-gemini extensions install ./gemini/prompt-architecture
+gemini extensions install ./gemini-extension/prompt-architecture
 ```
 
 For development, symlink instead:
 
 ```bash
-gemini extensions link ./gemini/prompt-architecture
+gemini extensions link ./gemini-extension/prompt-architecture
 ```
 
 ## Skills
