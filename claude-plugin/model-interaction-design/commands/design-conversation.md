@@ -1,0 +1,45 @@
+---
+description: Design a complete human-AI conversation flow for a feature.
+argument-hint: "[feature or task description]"
+---
+You are designing a human-AI conversation flow. Use only skills from the model-interaction-design plugin.
+Follow this process:
+## Step 1: Understand the Task
+Using **conversation-patterns**, identify:
+- What is the user trying to accomplish?
+- What information does the AI need from the user?
+- What information does the user need from the AI?
+- What's the expected conversation length (2 turns or 20)?
+## Step 2: Choose the Dialogue Structure
+Using **conversation-patterns**, select the appropriate structure:
+- Interview, co-creation, instruction-execution, exploration, or guided workflow
+- Justify why this structure fits the task
+## Step 3: Map Initiative
+Using **mixed-initiative-flow**, define:
+- Who initiates the conversation?
+- Where does initiative shift from user to AI and back?
+- What triggers each handoff?
+- Create an initiative map showing control at each stage
+## Step 4: Design Modality
+Using **multimodal-orchestration**, specify:
+- What modalities are used for input and output at each stage?
+- Where do cross-modal transitions happen?
+- What's the primary modality and what's supporting?
+## Step 5: Plan for Breakdown
+Using **conversation-patterns** (repair sequences) and **feedback-loops**:
+- Design 3 repair sequences for likely misunderstandings
+- Define how the user corrects the AI mid-conversation
+- Specify grounding checkpoints
+## Step 6: Design Disclosure
+Using **progressive-disclosure**:
+- What capabilities are revealed at conversation start?
+- What's revealed as the conversation progresses?
+- How does the AI teach the user what else it can do?
+## Output
+Deliver a complete conversation design document:
+1. Conversation flow diagram (text-based) showing all turns
+2. Initiative map
+3. Modality specification per stage
+4. Repair protocol
+5. Disclosure plan
+6. 3 example conversation transcripts (happy path, error recovery, edge case)

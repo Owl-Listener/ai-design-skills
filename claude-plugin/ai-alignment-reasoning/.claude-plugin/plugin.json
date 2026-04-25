@@ -1,6 +1,10 @@
 {
   "name": "ai-alignment-reasoning",
   "description": "Design guardrails, safety boundaries, value alignment, and ethical constraints into AI products.",
-  "skills": "../skills",
-  "commands": "../commands"
+  "version": "1.0.0",
+  "author": {
+    "name": "MC Dean",
+    "url": "https://github.com/Owl-Listener"
+  },
+  "license": "MIT"
 }

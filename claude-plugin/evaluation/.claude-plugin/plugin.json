@@ -1,6 +1,10 @@
 {
   "name": "evaluation",
   "description": "Measure AI output quality, user satisfaction, task success, and design effectiveness.",
-  "skills": "../skills",
-  "commands": "../commands"
+  "version": "1.0.0",
+  "author": {
+    "name": "MC Dean",
+    "url": "https://github.com/Owl-Listener"
+  },
+  "license": "MIT"
 }

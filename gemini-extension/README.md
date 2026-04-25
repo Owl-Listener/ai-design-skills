@@ -43,5 +43,5 @@ Each extension follows Gemini CLI conventions:
 
 - `gemini-extension.json` — manifest (`name`, `version`, `description`, `contextFileName`).
 - `GEMINI.md` — context file; `@`-includes every skill so the skill content is loaded into context when the extension is active.
-- `skills/` — symlink to the canonical `skills/<plugin>/` tree at the repo root, where each skill lives at `<name>/SKILL.md`.
-- `commands/<name>.toml` — custom slash commands, invoked as `/<extension>:<command> <args>`. Generated from the canonical `commands/<plugin>/<name>.md` files by `scripts/build-gemini-commands.py`; do not edit by hand.
+- `skills/<name>/SKILL.md` — one directory per skill. Generated copy of the canonical `skills/<plugin>/<name>/SKILL.md`.
+- `commands/<name>.toml` — custom slash commands, invoked as `/<extension>:<command> <args>`. Generated from the canonical `commands/<plugin>/<name>.md` files by `scripts/build.py`; do not edit by hand.

@@ -1,0 +1,50 @@
+---
+description: Design a benchmark suite to measure AI product performance over time.
+argument-hint: "[AI product or feature to design benchmarks for]"
+---
+You are designing a benchmark suite for ongoing AI quality measurement. Use only skills from the evaluation plugin.
+Follow this process:
+## Step 1: Define Benchmark Goals
+- What does this benchmark need to measure?
+- What decisions will benchmark results inform? (model updates, prompt changes, feature launches)
+- What's the measurement cadence? (daily, weekly, per-release)
+## Step 2: Design the Golden Test Set
+Using **output-quality-rubrics** and **longitudinal-measurement**:
+- Define input categories that cover key use cases
+- Create 20-50 representative test inputs spanning:
+  - Common use cases (high frequency)
+  - Edge cases (high risk)
+  - Known failure modes (regression detection)
+  - Diverse user profiles and contexts
+- For each input, define the expected quality standards
+## Step 3: Define Metrics
+Using **task-success-metrics**, **user-satisfaction-signals**, and **output-quality-rubrics**:
+- Select metrics to track: quality scores, task success rates, failure rates, latency
+- Define how each metric is calculated
+- Set baselines from current performance
+- Define acceptable ranges and alert thresholds
+## Step 4: Design Failure Monitoring
+Using **failure-taxonomy**:
+- Define which failure types to track
+- Set severity-specific thresholds (e.g., zero tolerance for critical safety failures)
+- Design failure trend tracking
+## Step 5: Design Comparative Testing
+Using **comparative-evaluation**:
+- Define how new versions will be compared to the current baseline
+- Specify A/B test protocols for significant changes
+- Define statistical significance requirements
+## Step 6: Plan for Drift Detection
+Using **longitudinal-measurement**:
+- Define what constitutes meaningful quality drift vs. normal variance
+- Design automated alerts for drift detection
+- Specify the investigation and response protocol when drift is detected
+## Output
+Deliver a complete benchmark suite specification:
+1. Benchmark goals and decision framework
+2. Golden test set (20-50 inputs with expected standards)
+3. Metrics definitions with baselines and thresholds
+4. Failure monitoring specifications
+5. Comparative testing protocol
+6. Drift detection and response plan
+7. Benchmark reporting template
+8. Recommended automation approach

@@ -1,6 +1,10 @@
 {
   "name": "prompt-architecture",
   "description": "Structure prompts as design artefacts — system prompts, templates, chains, and reusable patterns.",
-  "skills": "../skills",
-  "commands": "../commands"
+  "version": "1.0.0",
+  "author": {
+    "name": "MC Dean",
+    "url": "https://github.com/Owl-Listener"
+  },
+  "license": "MIT"
 }

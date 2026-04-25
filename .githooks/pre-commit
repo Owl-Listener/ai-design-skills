@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Auto-regenerate Gemini command TOMLs when canonical commands/ change.
+# Auto-regenerate the agent-specific layers when canonical sources change.
 #
 # Activate: git config core.hooksPath .githooks
 # Documented in CONTRIBUTING.md.
@@ -9,16 +9,16 @@ set -euo pipefail
 repo_root=$(git rev-parse --show-toplevel)
 cd "$repo_root"
 
-# Only run if any staged change touches commands/ or the build script itself.
-if git diff --cached --name-only | grep -qE '^(commands/|scripts/build-gemini-commands\.py$)'; then
+# Only run if any staged change touches the canonical sources or the build itself.
+if git diff --cached --name-only | grep -qE '^(skills/|commands/|scripts/build\.py$)'; then
     if ! command -v python3 >/dev/null 2>&1; then
-        echo "pre-commit: python3 not found; skipping Gemini TOML regeneration" >&2
+        echo "pre-commit: python3 not found; skipping agent-layer rebuild" >&2
         exit 0
     fi
-    python3 scripts/build-gemini-commands.py
-    # Stage anything the script changed under gemini-extension/.
-    if ! git diff --quiet -- gemini-extension/; then
-        git add gemini-extension/
-        echo "pre-commit: regenerated Gemini command TOMLs and added them to the commit" >&2
+    python3 scripts/build.py
+    # Stage anything the script changed under the materialised layers.
+    if ! git diff --quiet -- claude-plugin/ gemini-extension/; then
+        git add claude-plugin/ gemini-extension/
+        echo "pre-commit: rebuilt claude-plugin/ and gemini-extension/ and added the changes" >&2
     fi
 fi
