@@ -4,11 +4,15 @@ Measure AI output quality, user satisfaction, task success, and design effective
 
 ## Install
 
+Clone the monorepo and install this extension from its local path:
+
 ```bash
-gemini extensions install https://github.com/Owl-Listener/ai-design-skills --path gemini/evaluation
+git clone https://github.com/Owl-Listener/ai-design-skills
+cd ai-design-skills
+gemini extensions install ./gemini/evaluation
 ```
 
-Or clone the repo and link locally:
+For development, symlink instead:
 
 ```bash
 gemini extensions link ./gemini/evaluation
@@ -16,20 +20,22 @@ gemini extensions link ./gemini/evaluation
 
 ## Skills
 
-| Skill | Location |
-|-------|----------|
-| comparative-evaluation | see `skills/comparative-evaluation/SKILL.md` |
-| failure-taxonomy | see `skills/failure-taxonomy/SKILL.md` |
-| heuristic-evaluation-ai | see `skills/heuristic-evaluation-ai/SKILL.md` |
-| longitudinal-measurement | see `skills/longitudinal-measurement/SKILL.md` |
-| output-quality-rubrics | see `skills/output-quality-rubrics/SKILL.md` |
-| task-success-metrics | see `skills/task-success-metrics/SKILL.md` |
-| user-satisfaction-signals | see `skills/user-satisfaction-signals/SKILL.md` |
+| Skill | File |
+|-------|------|
+| comparative-evaluation | `skills/comparative-evaluation/SKILL.md` |
+| failure-taxonomy | `skills/failure-taxonomy/SKILL.md` |
+| heuristic-evaluation-ai | `skills/heuristic-evaluation-ai/SKILL.md` |
+| longitudinal-measurement | `skills/longitudinal-measurement/SKILL.md` |
+| output-quality-rubrics | `skills/output-quality-rubrics/SKILL.md` |
+| task-success-metrics | `skills/task-success-metrics/SKILL.md` |
+| user-satisfaction-signals | `skills/user-satisfaction-signals/SKILL.md` |
 
 ## Commands
 
-| Command | Location |
-|---------|----------|
-| `/evaluation:create-rubric` | see `commands/create-rubric.toml` |
-| `/evaluation:design-benchmark` | see `commands/design-benchmark.toml` |
-| `/evaluation:run-evaluation` | see `commands/run-evaluation.toml` |
+Invoke from within Gemini CLI:
+
+| Command | File |
+|---------|------|
+| `/evaluation:create-rubric` | `commands/create-rubric.toml` |
+| `/evaluation:design-benchmark` | `commands/design-benchmark.toml` |
+| `/evaluation:run-evaluation` | `commands/run-evaluation.toml` |

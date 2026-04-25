@@ -4,11 +4,15 @@ Design multi-agent systems, handoffs between AI agents, and human-in-the-loop wo
 
 ## Install
 
+Clone the monorepo and install this extension from its local path:
+
 ```bash
-gemini extensions install https://github.com/Owl-Listener/ai-design-skills --path gemini/design-agent-orchestration
+git clone https://github.com/Owl-Listener/ai-design-skills
+cd ai-design-skills
+gemini extensions install ./gemini/design-agent-orchestration
 ```
 
-Or clone the repo and link locally:
+For development, symlink instead:
 
 ```bash
 gemini extensions link ./gemini/design-agent-orchestration
@@ -16,20 +20,22 @@ gemini extensions link ./gemini/design-agent-orchestration
 
 ## Skills
 
-| Skill | Location |
-|-------|----------|
-| agent-role-design | see `skills/agent-role-design/SKILL.md` |
-| failure-recovery | see `skills/failure-recovery/SKILL.md` |
-| handoff-protocols | see `skills/handoff-protocols/SKILL.md` |
-| human-in-the-loop | see `skills/human-in-the-loop/SKILL.md` |
-| observability-design | see `skills/observability-design/SKILL.md` |
-| state-management | see `skills/state-management/SKILL.md` |
-| task-decomposition | see `skills/task-decomposition/SKILL.md` |
+| Skill | File |
+|-------|------|
+| agent-role-design | `skills/agent-role-design/SKILL.md` |
+| failure-recovery | `skills/failure-recovery/SKILL.md` |
+| handoff-protocols | `skills/handoff-protocols/SKILL.md` |
+| human-in-the-loop | `skills/human-in-the-loop/SKILL.md` |
+| observability-design | `skills/observability-design/SKILL.md` |
+| state-management | `skills/state-management/SKILL.md` |
+| task-decomposition | `skills/task-decomposition/SKILL.md` |
 
 ## Commands
 
-| Command | Location |
-|---------|----------|
-| `/design-agent-orchestration:design-oversight` | see `commands/design-oversight.toml` |
-| `/design-agent-orchestration:design-workflow` | see `commands/design-workflow.toml` |
-| `/design-agent-orchestration:map-agents` | see `commands/map-agents.toml` |
+Invoke from within Gemini CLI:
+
+| Command | File |
+|---------|------|
+| `/design-agent-orchestration:design-oversight` | `commands/design-oversight.toml` |
+| `/design-agent-orchestration:design-workflow` | `commands/design-workflow.toml` |
+| `/design-agent-orchestration:map-agents` | `commands/map-agents.toml` |

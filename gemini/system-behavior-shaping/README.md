@@ -4,11 +4,15 @@ Craft AI personality, tone, persona, and behavioral consistency across contexts.
 
 ## Install
 
+Clone the monorepo and install this extension from its local path:
+
 ```bash
-gemini extensions install https://github.com/Owl-Listener/ai-design-skills --path gemini/system-behavior-shaping
+git clone https://github.com/Owl-Listener/ai-design-skills
+cd ai-design-skills
+gemini extensions install ./gemini/system-behavior-shaping
 ```
 
-Or clone the repo and link locally:
+For development, symlink instead:
 
 ```bash
 gemini extensions link ./gemini/system-behavior-shaping
@@ -16,20 +20,22 @@ gemini extensions link ./gemini/system-behavior-shaping
 
 ## Skills
 
-| Skill | Location |
-|-------|----------|
-| behavioral-consistency | see `skills/behavioral-consistency/SKILL.md` |
-| cultural-adaptation | see `skills/cultural-adaptation/SKILL.md` |
-| domain-voice | see `skills/domain-voice/SKILL.md` |
-| emotional-design | see `skills/emotional-design/SKILL.md` |
-| error-personality | see `skills/error-personality/SKILL.md` |
-| persona-architecture | see `skills/persona-architecture/SKILL.md` |
-| tone-calibration | see `skills/tone-calibration/SKILL.md` |
+| Skill | File |
+|-------|------|
+| behavioral-consistency | `skills/behavioral-consistency/SKILL.md` |
+| cultural-adaptation | `skills/cultural-adaptation/SKILL.md` |
+| domain-voice | `skills/domain-voice/SKILL.md` |
+| emotional-design | `skills/emotional-design/SKILL.md` |
+| error-personality | `skills/error-personality/SKILL.md` |
+| persona-architecture | `skills/persona-architecture/SKILL.md` |
+| tone-calibration | `skills/tone-calibration/SKILL.md` |
 
 ## Commands
 
-| Command | Location |
-|---------|----------|
-| `/system-behavior-shaping:calibrate-tone` | see `commands/calibrate-tone.toml` |
-| `/system-behavior-shaping:design-persona` | see `commands/design-persona.toml` |
-| `/system-behavior-shaping:stress-test` | see `commands/stress-test.toml` |
+Invoke from within Gemini CLI:
+
+| Command | File |
+|---------|------|
+| `/system-behavior-shaping:calibrate-tone` | `commands/calibrate-tone.toml` |
+| `/system-behavior-shaping:design-persona` | `commands/design-persona.toml` |
+| `/system-behavior-shaping:stress-test` | `commands/stress-test.toml` |
