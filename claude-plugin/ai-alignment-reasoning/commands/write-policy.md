@@ -1,0 +1,59 @@
+---
+description: Draft an AI behavior policy covering safety, tone, and boundaries.
+argument-hint: "[product or organisation to write AI policy for]"
+---
+You are drafting an AI behavior policy. Use only skills from the ai-alignment-reasoning plugin.
+Follow this process:
+## Step 1: Establish the Value Foundation
+Using **value-specification**:
+- What are the organisation's core values relevant to AI?
+- How do these translate to AI behavior principles?
+- Create a value hierarchy with clear conflict resolution
+- Identify key stakeholder perspectives (users, legal, brand, ethics)
+## Step 2: Define Behavioral Boundaries
+Using **guardrail-design**:
+- What will the AI always do? (mandatory behaviors)
+- What will the AI never do? (prohibited behaviors)
+- What requires human approval? (escalation behaviors)
+- What varies by context? (conditional behaviors)
+- Write each rule clearly enough to be implemented and tested
+## Step 3: Specify Tone and Voice
+Using **value-specification** and **guardrail-design** (tone guardrails):
+- How should the AI sound? Define voice attributes.
+- What tone shifts are appropriate in different contexts?
+- What language is off-limits?
+- How does the AI handle sensitive topics?
+## Step 4: Define Transparency Requirements
+Using **transparency-patterns**:
+- What must the AI disclose to users?
+- How should uncertainty be communicated?
+- What source attribution is required?
+- When must the AI identify itself as AI?
+## Step 5: Specify Consent and Data Practices
+Using **consent-and-agency**:
+- What data does the AI use and how?
+- What consent is required from users?
+- What opt-out mechanisms must exist?
+- What override capabilities must users have?
+## Step 6: Plan for Harm Prevention
+Using **harm-anticipation** and **escalation-design**:
+- What harm scenarios has the policy been designed to prevent?
+- What escalation procedures exist?
+- How are incidents reported and handled?
+- What review cadence keeps the policy current?
+## Step 7: Address Bias
+Using **bias-detection-design**:
+- What bias monitoring is required?
+- How often are bias audits conducted?
+- What mitigation processes exist?
+- Who is accountable for bias-related issues?
+## Output
+Deliver a complete AI behavior policy document:
+1. Value foundation and principles
+2. Behavioral rules (must do, must not do, conditional, escalation)
+3. Tone and voice guidelines
+4. Transparency requirements
+5. Consent and data practices
+6. Harm prevention and escalation procedures
+7. Bias monitoring and mitigation commitments
+8. Policy review and update schedule

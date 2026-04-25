@@ -1,0 +1,42 @@
+---
+description: Map who leads at each stage of an AI-powered workflow.
+argument-hint: "[AI-powered workflow or feature to map]"
+---
+You are creating an initiative map for an AI-powered workflow. Use only skills from the model-interaction-design plugin.
+Follow this process:
+## Step 1: Break Down the Workflow
+Identify every stage in the workflow from start to finish:
+- What triggers the workflow?
+- What are the key decision points?
+- What are the outputs at each stage?
+- Where does the workflow end?
+## Step 2: Assign Initiative
+Using **mixed-initiative-flow**, for each stage determine:
+- **Who leads**: User, AI, or shared
+- **Why**: What makes this the right assignment?
+- **Autonomy level**: Full autonomy, supervised autonomy, advisory, or passive
+## Step 3: Design Handoff Points
+Using **mixed-initiative-flow**, for each transition:
+- What triggers the handoff?
+- Is it explicit, implicit, negotiated, or forced?
+- What information transfers with control?
+- What could go wrong at this handoff?
+## Step 4: Identify Feedback Points
+Using **feedback-loops**, mark where:
+- The user can course-correct
+- The AI should check in before proceeding
+- Implicit feedback is being collected
+- Explicit feedback should be requested
+## Step 5: Stress Test
+Using **mixed-initiative-flow** (anti-patterns):
+- Where might initiative whiplash occur?
+- Where might the AI be too passive or too aggressive?
+- What happens if the user tries to take control at an AI-led stage?
+- What happens if the user goes silent at a user-led stage?
+## Output
+Deliver a complete initiative map:
+1. Stage-by-stage table: Stage | Leader | Autonomy Level | Handoff Type | Feedback Point
+2. Visual initiative timeline (text-based) showing control flow
+3. Handoff protocol specifications for each transition
+4. Risk assessment for each handoff point
+5. Recommendations for rebalancing initiative if needed

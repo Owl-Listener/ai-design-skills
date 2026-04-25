@@ -3,29 +3,31 @@ Thanks for your interest in contributing! This collection is open to new skills,
 
 ## Repo layout
 
-There is one canonical copy of every skill and every command. The agent-specific layers (Claude Code plugins and Gemini CLI extensions) reference that canonical content via symlinks (skills) or a build script (Gemini command TOMLs).
+There is one canonical copy of every skill and every command. The agent-specific layers (Claude Code plugins and Gemini CLI extensions) are **generated** from the canonical sources by `scripts/build.py` and committed.
 
 ```
-skills/<plugin>/<skill-name>/SKILL.md       # canonical skill
-commands/<plugin>/<command-name>.md         # canonical slash command (Claude .md form)
+skills/<plugin>/<skill-name>/SKILL.md       # ◄ canonical skill (edit here)
+commands/<plugin>/<command-name>.md         # ◄ canonical slash command (edit here)
 
 claude-plugin/<plugin>/                     # Claude Code installable layer
 ├── .claude-plugin/plugin.json
 ├── README.md
-├── skills    -> ../../skills/<plugin>      # symlink
-└── commands  -> ../../commands/<plugin>    # symlink
+├── skills/<skill-name>/SKILL.md            # generated copy of canonical skill
+└── commands/<command-name>.md              # generated copy of canonical command
 
 gemini-extension/<plugin>/                  # Gemini CLI installable layer
 ├── gemini-extension.json
 ├── GEMINI.md
 ├── README.md
-├── skills    -> ../../skills/<plugin>      # symlink
-└── commands/<command-name>.toml            # generated from commands/<plugin>/<name>.md
+├── skills/<skill-name>/SKILL.md            # generated copy of canonical skill
+└── commands/<command-name>.toml            # generated TOML wrapper of canonical command
 
-scripts/build-gemini-commands.py            # commands/*.md → gemini-extension/*/commands/*.toml
-.githooks/pre-commit                        # auto-runs build script when commands/ changes
-.github/workflows/build-check.yml           # CI fails if generated TOMLs drift from source
+scripts/build.py                            # rebuilds claude-plugin/ + gemini-extension/
+.githooks/pre-commit                        # auto-runs build.py when skills/ or commands/ changes
+.github/workflows/build-check.yml           # CI fails if either layer drifts from canonical
 ```
+
+The agent layers are file copies, not symlinks. Earlier iterations of this layout used symlinks, but `claude plugin install` does not preserve symlinks pointing outside the plugin source directory — the cache ends up empty for `skills/` and `commands/`. Materialised copies are the only layout that works against both local-directory and GitHub marketplace installs.
 
 ## Adding a Skill
 Skills are domain knowledge units (nouns). They teach the agent about a design topic.
@@ -40,7 +42,11 @@ description: One-line description of the skill.
 ---
 ```
 
-Both Claude Code and Gemini CLI pick the new skill up automatically because each agent's `<plugin>/skills` is a symlink to `skills/<plugin>/`.
+Run the build script (or rely on the pre-commit hook) so the new skill propagates into both agent layers:
+```bash
+python3 scripts/build.py
+```
+This regenerates `claude-plugin/<plugin>/skills/` and `gemini-extension/<plugin>/skills/`. Commit the regenerated files alongside the canonical source.
 
 ## Adding a Command
 Commands are workflows (verbs). They chain multiple skills together to accomplish a task.
@@ -55,35 +61,30 @@ argument-hint: "[what the user should provide]"
 ---
 ```
 
-The Claude side picks the new command up directly via the symlink. For the Gemini side, run the build script (or rely on the pre-commit hook):
+Run the build script (or rely on the pre-commit hook):
 ```bash
-python3 scripts/build-gemini-commands.py
+python3 scripts/build.py
 ```
-This generates `gemini-extension/<plugin>/commands/<command-name>.toml`. Commit the regenerated TOML alongside the source `.md`.
+This copies the `.md` into `claude-plugin/<plugin>/commands/` and generates `gemini-extension/<plugin>/commands/<command-name>.toml`. Commit the regenerated files alongside the source `.md`.
 
 ## Adding a Plugin
 A plugin is a collection of related skills and commands.
 1. Create `skills/<plugin>/` and `commands/<plugin>/` and add content as above.
 2. Create `claude-plugin/<plugin>/.claude-plugin/plugin.json` with `name` and `description`.
-3. Symlink `claude-plugin/<plugin>/skills -> ../../skills/<plugin>` and `claude-plugin/<plugin>/commands -> ../../commands/<plugin>`.
-4. Add `claude-plugin/<plugin>/README.md` with a table of skills and commands.
-5. Create `gemini-extension/<plugin>/gemini-extension.json` (with `name`, `version`, `description`, `contextFileName: "GEMINI.md"`).
-6. Add `gemini-extension/<plugin>/GEMINI.md` that `@`-includes every skill (`@./skills/<name>/SKILL.md`).
-7. Symlink `gemini-extension/<plugin>/skills -> ../../skills/<plugin>`.
-8. Run `python3 scripts/build-gemini-commands.py` to materialise the Gemini TOMLs.
-9. Add `gemini-extension/<plugin>/README.md`.
-10. Add the plugin to the root `.claude-plugin/marketplace.json` (`{ "name": "...", "source": "./claude-plugin/<plugin>" }`).
-11. Update the root `README.md` plugins table.
+3. Add `claude-plugin/<plugin>/README.md` with a table of skills and commands.
+4. Create `gemini-extension/<plugin>/gemini-extension.json` (with `name`, `version`, `description`, `contextFileName: "GEMINI.md"`).
+5. Add `gemini-extension/<plugin>/GEMINI.md` that `@`-includes every skill (`@./skills/<name>/SKILL.md`).
+6. Add `gemini-extension/<plugin>/README.md`.
+7. Run `python3 scripts/build.py` to materialise both agent layers' `skills/` and `commands/` from the canonical sources.
+8. Add the plugin to the root `.claude-plugin/marketplace.json` (`{ "name": "...", "source": "./claude-plugin/<plugin>" }`).
+9. Update the root `README.md` plugins table.
 
 ## Local setup
-Activate the pre-commit hook so Gemini TOMLs stay in sync automatically:
+Activate the pre-commit hook so both agent layers stay in sync automatically:
 ```bash
 git config core.hooksPath .githooks
 ```
-The hook is a no-op if you don't touch `commands/` or the build script. CI will reject any drift in `gemini-extension/`, so even contributors who skip the hook are caught before merge.
-
-### Windows note
-The Claude and Gemini extension layers use filesystem symlinks. On Windows, git supports symlinks but requires `git config --global core.symlinks true` and either developer mode or admin privileges. If you cannot use symlinks, you can still edit canonical content and rely on CI to validate generated files; the agent installs themselves require symlinks to function.
+The hook is a no-op if you don't touch `skills/`, `commands/`, or the build script. CI rejects any drift in `claude-plugin/` or `gemini-extension/`, so even contributors who skip the hook are caught before merge.
 
 ## Guidelines
 - Skills should contain original design thinking, not just summaries of existing frameworks.
