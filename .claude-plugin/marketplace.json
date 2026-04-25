@@ -1,6 +1,12 @@
 {
-  "name": "AI Design Skills Collection",
-  "description": "Agentic skills, commands, and plugins for designing AI products — from interaction patterns to alignment, evaluation, agent orchestration, and prompt architecture.",
+  "name": "ai-design-skills",
+  "owner": {
+    "name": "MC Dean",
+    "url": "https://github.com/Owl-Listener"
+  },
+  "metadata": {
+    "description": "Agentic skills, commands, and plugins for designing AI products — from interaction patterns to alignment, evaluation, agent orchestration, and prompt architecture."
+  },
   "plugins": [
     { "name": "model-interaction-design", "source": "./claude-plugin/model-interaction-design" },
     { "name": "ai-alignment-reasoning", "source": "./claude-plugin/ai-alignment-reasoning" },

@@ -1,6 +1,10 @@
 {
   "name": "model-interaction-design",
   "description": "Design how humans and AI models communicate — conversation patterns, turn-taking, mixed-initiative flows, and generative UI.",
-  "skills": "../skills",
-  "commands": "../commands"
+  "version": "1.0.0",
+  "author": {
+    "name": "MC Dean",
+    "url": "https://github.com/Owl-Listener"
+  },
+  "license": "MIT"
 }
