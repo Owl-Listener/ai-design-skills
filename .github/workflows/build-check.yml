@@ -1,0 +1,28 @@
+name: build-check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  generated-files-up-to-date:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Regenerate Gemini command TOMLs
+        run: python3 scripts/build-gemini-commands.py
+      - name: Fail if generated files drifted from what is committed
+        run: |
+          if ! git diff --quiet -- gemini-extension/; then
+            echo "::error::Generated files in gemini-extension/ are out of date."
+            echo "Run 'python3 scripts/build-gemini-commands.py' locally and commit the result."
+            echo "Or enable the pre-commit hook: git config core.hooksPath .githooks"
+            echo
+            echo "Drift:"
+            git --no-pager diff -- gemini-extension/
+            exit 1
+          fi
