@@ -10,6 +10,7 @@ Design how humans and AI models communicate — conversation patterns, turn-taki
 | context-window-design | Designing around token limits, memory, and conversation persistence. |
 | generative-ui | Designing interfaces where AI generates UI components dynamically. |
 | feedback-loops | User correction, thumbs up/down, inline editing, and reinforcement signals. |
+| frustration-detection | Reading user emotional state from text signals — caps, punctuation density, repetition, latency — and adapting before the user disengages. |
 ## Commands
 | Command | Description |
 |---------|-------------|

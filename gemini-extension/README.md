@@ -1,13 +1,13 @@
 # AI Design Skills — Gemini CLI Extensions
 
-Gemini CLI port of the [AI Design Skills Collection](../README.md). Six extensions, 42 skills, 18 custom commands — matching the Claude Code plugins.
+Gemini CLI port of the [AI Design Skills Collection](../README.md). Six extensions, 44 skills, 18 custom commands — matching the Claude Code plugins.
 
 ## Extensions
 
 | Extension | Skills | Commands | Description |
 |-----------|--------|----------|-------------|
-| [model-interaction-design](./model-interaction-design) | 7 | 3 | Design how humans and AI models communicate — conversation patterns, turn-taking, mixed-initiative flows, and generative UI. |
-| [ai-alignment-reasoning](./ai-alignment-reasoning) | 7 | 3 | Design guardrails, safety boundaries, value alignment, and ethical constraints into AI products. |
+| [model-interaction-design](./model-interaction-design) | 8 | 3 | Design how humans and AI models communicate — conversation patterns, turn-taking, mixed-initiative flows, and generative UI. |
+| [ai-alignment-reasoning](./ai-alignment-reasoning) | 8 | 3 | Design guardrails, safety boundaries, value alignment, and ethical constraints into AI products. |
 | [system-behavior-shaping](./system-behavior-shaping) | 7 | 3 | Craft AI personality, tone, persona, and behavioral consistency across contexts. |
 | [evaluation](./evaluation) | 7 | 3 | Measure AI output quality, user satisfaction, task success, and design effectiveness. |
 | [design-agent-orchestration](./design-agent-orchestration) | 7 | 3 | Design multi-agent systems, handoffs between AI agents, and human-in-the-loop workflows. |

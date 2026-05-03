@@ -10,6 +10,7 @@ Design guardrails, safety boundaries, value alignment, and ethical constraints i
 | consent-and-agency | Designing for informed user consent, opt-out, and human override. |
 | bias-detection-design | Designing review workflows to surface and mitigate bias in AI outputs. |
 | escalation-design | When and how AI should escalate to humans, refuse, or ask for clarification. |
+| trust-calibration | Helping users form warranted trust in the AI — neither overtrust nor undertrust — through deliberate confidence and source signalling. |
 ## Commands
 | Command | Description |
 |---------|-------------|

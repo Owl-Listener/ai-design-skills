@@ -9,6 +9,7 @@ The following skills are available. Use them when designing AI products within t
 @./skills/context-window-design/SKILL.md
 @./skills/conversation-patterns/SKILL.md
 @./skills/feedback-loops/SKILL.md
+@./skills/frustration-detection/SKILL.md
 @./skills/generative-ui/SKILL.md
 @./skills/mixed-initiative-flow/SKILL.md
 @./skills/multimodal-orchestration/SKILL.md

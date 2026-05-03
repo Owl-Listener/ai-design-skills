@@ -25,6 +25,7 @@ gemini extensions link ./gemini-extension/model-interaction-design
 | context-window-design | `skills/context-window-design/SKILL.md` |
 | conversation-patterns | `skills/conversation-patterns/SKILL.md` |
 | feedback-loops | `skills/feedback-loops/SKILL.md` |
+| frustration-detection | `skills/frustration-detection/SKILL.md` |
 | generative-ui | `skills/generative-ui/SKILL.md` |
 | mixed-initiative-flow | `skills/mixed-initiative-flow/SKILL.md` |
 | multimodal-orchestration | `skills/multimodal-orchestration/SKILL.md` |

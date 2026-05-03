@@ -28,6 +28,7 @@ gemini extensions link ./gemini-extension/ai-alignment-reasoning
 | guardrail-design | `skills/guardrail-design/SKILL.md` |
 | harm-anticipation | `skills/harm-anticipation/SKILL.md` |
 | transparency-patterns | `skills/transparency-patterns/SKILL.md` |
+| trust-calibration | `skills/trust-calibration/SKILL.md` |
 | value-specification | `skills/value-specification/SKILL.md` |
 
 ## Commands
