@@ -12,6 +12,7 @@ The following skills are available. Use them when designing AI products within t
 @./skills/guardrail-design/SKILL.md
 @./skills/harm-anticipation/SKILL.md
 @./skills/transparency-patterns/SKILL.md
+@./skills/trust-calibration/SKILL.md
 @./skills/value-specification/SKILL.md
 
 ## Commands

@@ -1,6 +1,6 @@
 {
   "name": "ai-alignment-reasoning",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "Design guardrails, safety boundaries, value alignment, and ethical constraints into AI products.",
   "contextFileName": "GEMINI.md"
 }
