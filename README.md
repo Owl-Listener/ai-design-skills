@@ -10,7 +10,7 @@ Agentic skills, commands, and plugins for designing AI products — from interac
 
 Agentic Experience Design (AXD) is a new discipline. It has its own vocabulary, definitions, and practices, and it is emerging in real time. *Mixed-initiative flow. Harm anticipation. Handoff protocol. Error personality.* These are real, useful, often-academic terms. They have not yet been collected into a form designers can reach for in real work.
 
-This repo is the collection. Six plugins, mapped to six layers of the discipline: *model interaction, alignment reasoning, system behaviour, evaluation, agent orchestration, prompt architecture.* Inside each, seven skills and three commands your AI agent can load when you are designing or auditing agentic experiences. The work in the underlying ideas was done by alignment researchers and HCI scholars over the last three years; the translation into installable skills is the contribution. See [`REFERENCES.md`](./REFERENCES.md) for the mapping from skills back to source papers.
+This repo is the collection. Six plugins, mapped to six layers of the discipline: *model interaction, alignment reasoning, system behaviour, evaluation, agent orchestration, prompt architecture.* Inside each, seven skills and three commands your AI agent can load when you are designing or auditing agentic experiences. The work in the underlying ideas was done by alignment researchers and HCI scholars over the last three years; the translation into installable skills is the contribution. [`REFERENCES.md`](./REFERENCES.md) lists the source papers. [`RESEARCH.md`](./RESEARCH.md) makes the translation explicit — for each paper, what was adopted, what was reframed, and how the academic concept became the practitioner skill.
 
 ---
 
@@ -117,7 +117,10 @@ Each plugin has its own `README.md` with a full skill-by-skill table.
 
 ## References
 
-The skills are translations of academic and industry work into a form coding agents can use. See [`REFERENCES.md`](./REFERENCES.md) for the mapping from skills to source papers — Gao et al. on mixed-initiative interaction, Schreiber et al. on persona-based interactions, and others.
+The skills are translations of academic and industry work into a form coding agents can use.
+
+- [`REFERENCES.md`](./REFERENCES.md) — Full bibliography: every paper and resource that informed the collection.
+- [`RESEARCH.md`](./RESEARCH.md) — Research-to-practice mappings: for each paper, the core academic contribution, the translation moves made to turn it into a practitioner skill, and a cross-reference index of all 44 skills back to their source papers. Start here if you are a researcher studying the gap between HCI scholarship and practitioner tools, or a practitioner who wants to trace a skill to its academic source.
 
 ---
 
