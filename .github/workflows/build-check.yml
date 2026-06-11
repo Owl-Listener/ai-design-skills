@@ -17,12 +17,12 @@ jobs:
         run: python3 scripts/build.py
       - name: Fail if generated files drifted from what is committed
         run: |
-          if ! git diff --quiet -- claude-plugin/ gemini-extension/; then
-            echo "::error::claude-plugin/ or gemini-extension/ are out of date with skills/ and commands/."
+          if ! git diff --quiet -- claude-plugin/ gemini-extension/ vscode-copilot/; then
+            echo "::error::claude-plugin/, gemini-extension/, or vscode-copilot/ are out of date with skills/ and commands/."
             echo "Run 'python3 scripts/build.py' locally and commit the result."
             echo "Or enable the pre-commit hook: git config core.hooksPath .githooks"
             echo
             echo "Drift:"
-            git --no-pager diff -- claude-plugin/ gemini-extension/
+            git --no-pager diff -- claude-plugin/ gemini-extension/ vscode-copilot/
             exit 1
           fi

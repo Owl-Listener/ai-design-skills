@@ -1,0 +1,5 @@
+{
+  "name": "prompt-architecture",
+  "version": "1.0.0",
+  "description": "Structure prompts as design artefacts — system prompts, templates, chains, and reusable patterns."
+}

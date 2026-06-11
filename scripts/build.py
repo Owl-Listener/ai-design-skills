@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
-"""Materialize the Claude and Gemini agent layers from canonical sources.
+"""Materialize the Claude, Gemini, and VS Code Copilot agent layers from canonical sources.
 
 Single source of truth lives at the repo root:
   skills/<plugin>/<skill-name>/SKILL.md
   commands/<plugin>/<command-name>.md   (Claude .md form, with YAML frontmatter)
 
 This script regenerates everything else:
-  claude-plugin/<plugin>/skills/<skill-name>/SKILL.md     (file copy)
-  claude-plugin/<plugin>/commands/<command-name>.md       (file copy)
-  gemini-extension/<plugin>/skills/<skill-name>/SKILL.md  (file copy)
-  gemini-extension/<plugin>/commands/<command-name>.toml  (generated; see below)
+  claude-plugin/<plugin>/skills/<skill-name>/SKILL.md          (file copy)
+  claude-plugin/<plugin>/commands/<command-name>.md            (file copy)
+  gemini-extension/<plugin>/skills/<skill-name>/SKILL.md       (file copy)
+  gemini-extension/<plugin>/commands/<command-name>.toml       (generated; see below)
+  vscode-copilot/<plugin>/commands/<command-name>.prompt.md    (generated; see below)
 
 Why copies instead of symlinks: Claude's plugin install does not preserve
 symlinks that point outside the plugin source directory; the cache ends up
@@ -38,9 +39,11 @@ SKILLS_SRC = ROOT / "skills"
 COMMANDS_SRC = ROOT / "commands"
 CLAUDE_DST = ROOT / "claude-plugin"
 GEMINI_DST = ROOT / "gemini-extension"
+VSCODE_DST = ROOT / "vscode-copilot"
 
 FRONTMATTER_RE = re.compile(r"\A---\n(.*?)\n---\n(.*)\Z", re.DOTALL)
 DESC_RE = re.compile(r"^description:\s*(.*?)\s*$", re.MULTILINE)
+ARG_HINT_RE = re.compile(r"^argument-hint:\s*(.*?)\s*$", re.MULTILINE)
 
 
 def escape_basic_string(value: str) -> str:
@@ -76,6 +79,43 @@ def md_to_toml(src_md: Path) -> str:
     )
 
 
+def md_to_prompt_md(src_md: Path) -> str:
+    """Convert a canonical command .md to a VS Code Copilot .prompt.md file.
+
+    VS Code .prompt.md frontmatter:
+      description  -> shown in the slash-command picker
+      agent        -> always "agent" for these workflow prompts
+      argument-hint -> forwarded from the canonical frontmatter if present
+    The body is copied verbatim.
+    """
+    text = src_md.read_text(encoding="utf-8")
+    match = FRONTMATTER_RE.match(text)
+    if not match:
+        raise SystemExit(f"{src_md}: no YAML frontmatter found")
+    frontmatter, body = match.group(1), match.group(2)
+
+    desc_match = DESC_RE.search(frontmatter)
+    if not desc_match:
+        raise SystemExit(f"{src_md}: no 'description:' field in frontmatter")
+    description = desc_match.group(1).strip().strip('"').strip("'")
+
+    arg_hint_match = ARG_HINT_RE.search(frontmatter)
+    argument_hint = (
+        arg_hint_match.group(1).strip().strip('"').strip("'")
+        if arg_hint_match
+        else ""
+    )
+
+    lines = ["---"]
+    lines.append(f'description: "{escape_basic_string(description)}"')
+    lines.append('agent: "agent"')
+    if argument_hint:
+        lines.append(f'argument-hint: "{escape_basic_string(argument_hint)}"')
+    lines.append("---")
+    lines.append(body.rstrip("\n"))
+    return "\n".join(lines) + "\n"
+
+
 def replace_dir(target: Path, source: Path) -> None:
     """Atomically replace target dir contents with a copy of source."""
     if target.exists() or target.is_symlink():
@@ -109,6 +149,18 @@ def build_plugin(plugin: str) -> tuple[int, int]:
             md_to_toml(src_md), encoding="utf-8"
         )
 
+    # VS Code Copilot layer: generated .prompt.md for commands/.
+    # Agent definition files (<plugin>.agent.md) and vscode-copilot.json are
+    # authored directly in vscode-copilot/<plugin>/ and are not regenerated here.
+    vscode_cmd_dir = VSCODE_DST / plugin / "commands"
+    if vscode_cmd_dir.exists():
+        shutil.rmtree(vscode_cmd_dir)
+    vscode_cmd_dir.mkdir(parents=True)
+    for src_md in sorted(commands_src.glob("*.md")):
+        (vscode_cmd_dir / f"{src_md.stem}.prompt.md").write_text(
+            md_to_prompt_md(src_md), encoding="utf-8"
+        )
+
     return skill_count, command_count
 
 
@@ -127,7 +179,7 @@ def main() -> int:
     print(
         f"built {len(plugins)} plugins: "
         f"{total_skills} skills, {total_commands} commands "
-        f"(claude-plugin/ + gemini-extension/)",
+        f"(claude-plugin/ + gemini-extension/ + vscode-copilot/)",
         file=sys.stderr,
     )
     return 0
