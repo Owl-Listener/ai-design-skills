@@ -10,7 +10,7 @@
 
 Agentic skills, commands, and plugins for designing AI products — from interaction patterns to alignment, evaluation, agent orchestration, and prompt architecture.
 
-**44 skills** and **18 commands** across **6 plugins**, available for both [Claude Code](https://docs.anthropic.com/en/docs/claude-code) and [Gemini CLI](https://github.com/google-gemini/gemini-cli). Same skills, same shape, both supported as first-class agents.
+**44 skills** and **20 commands** across **6 plugins**, available for both [Claude Code](https://docs.anthropic.com/en/docs/claude-code) and [Gemini CLI](https://github.com/google-gemini/gemini-cli). Same skills, same shape, both supported as first-class agents.
 
 ---
 
@@ -116,7 +116,7 @@ When you ask your agent a question, it matches your wording against the `descrip
 | `ai-alignment-reasoning` | Outside-of-the-model alignment work | 8 | 3 |
 | `system-behavior-shaping` | How the agent shows up — persona, tone, error personality | 7 | 3 |
 | `evaluation` | Failure taxonomies, output rubrics, agent-specific heuristics | 7 | 3 |
-| `design-agent-orchestration` | Multi-agent role design, handoffs, observability | 7 | 3 |
+| `design-agent-orchestration` | Multi-agent role design, handoffs, observability | 7 | 5 |
 | `prompt-architecture` | Chain-of-thought, constraint specification, system prompts | 7 | 3 |
 
 Each plugin has its own `README.md` with a full skill-by-skill table.

@@ -36,6 +36,8 @@ Invoke from within Gemini CLI:
 
 | Command | File |
 |---------|------|
+| `/design-agent-orchestration:design-new-agent` | `commands/design-new-agent.toml` |
 | `/design-agent-orchestration:design-oversight` | `commands/design-oversight.toml` |
 | `/design-agent-orchestration:design-workflow` | `commands/design-workflow.toml` |
 | `/design-agent-orchestration:map-agents` | `commands/map-agents.toml` |
+| `/design-agent-orchestration:review-agent` | `commands/review-agent.toml` |

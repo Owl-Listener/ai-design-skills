@@ -16,3 +16,5 @@ Design multi-agent systems, handoffs between AI agents, and human-in-the-loop wo
 | `/design-agent-orchestration:design-workflow` | Design a complete multi-agent workflow with roles, handoffs, and fallbacks. |
 | `/design-agent-orchestration:map-agents` | Map out agent responsibilities, boundaries, and communication patterns. |
 | `/design-agent-orchestration:design-oversight` | Create a human oversight plan for an agentic system. |
+| `/design-agent-orchestration:design-new-agent` | Design a new agent end-to-end, consulting all six AXD design layers so no lens is skipped. |
+| `/design-agent-orchestration:review-agent` | Audit and optimise an existing agent across all six AXD design layers so no weakness goes unexamined. |

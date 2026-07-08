@@ -1,0 +1,54 @@
+---
+description: Design a new agent end-to-end, consulting all six AXD design layers so no lens is skipped.
+argument-hint: "[the new agent or agentic feature you are designing]"
+---
+You are designing a new agent from scratch. Unlike the single-plugin commands, this is a **cross-cutting workflow**: it deliberately walks all six plugins so every design layer is consulted, not only the ones your phrasing happens to match. Requires all six plugins installed (`model-interaction-design`, `prompt-architecture`, `evaluation`, `ai-alignment-reasoning`, `design-agent-orchestration`, `system-behavior-shaping`).
+Work the layers in dependency order: foundation first, then failure modes, then orchestration, then voice. Do not skip a layer because it seems irrelevant — instead, state explicitly why a layer does not apply and move on. That decision is itself a design output.
+Follow this process:
+## Step 0: Frame the Agent
+- What is the agent for, and who is it for?
+- What is the single sentence of its purpose?
+- What are the stakes if it gets things wrong (low / medium / high)?
+- Is it a single agent or part of a multi-agent system?
+## Step 1: Foundation — Interaction
+Using the **model-interaction-design** plugin (**conversation-patterns**, **mixed-initiative-flow**, **progressive-disclosure**, **context-window-design**, **feedback-loops**, **multimodal-orchestration**, **generative-ui**, **frustration-detection**):
+- Define how the user and agent take turns and who holds initiative.
+- Sketch the core interaction loop and where the user can interrupt, correct, or redirect.
+- Decide what is progressively disclosed vs. shown upfront.
+## Step 2: Foundation — Prompt Architecture
+Using the **prompt-architecture** plugin (**system-prompt-structure**, **constraint-specification**, **chain-of-thought-design**, **context-engineering**, **few-shot-patterns**, **template-design**, **prompt-versioning**):
+- Draft the system prompt structure: role, constraints, output contract.
+- Specify hard constraints (what the agent must never do) and reasoning strategy.
+- Decide what context is engineered in, and how prompts will be versioned.
+## Step 3: Failure Modes — Evaluation
+Using the **evaluation** plugin (**failure-taxonomy**, **task-success-metrics**, **output-quality-rubrics**, **heuristic-evaluation-ai**, **comparative-evaluation**, **user-satisfaction-signals**, **longitudinal-measurement**):
+- Build a failure taxonomy for this agent before it ships.
+- Define what "success" means and how it is measured.
+- Draft an output-quality rubric and the signals you will watch after launch.
+## Step 4: Failure Modes — Alignment
+Using the **ai-alignment-reasoning** plugin (**harm-anticipation**, **guardrail-design**, **value-specification**, **escalation-design**, **consent-and-agency**, **transparency-patterns**, **trust-calibration**, **bias-detection-design**):
+- Anticipate harms and specify the values the agent must hold to.
+- Design guardrails and the escalation path when the agent is out of its depth.
+- Decide what the agent discloses about itself and how it calibrates user trust.
+## Step 5: Orchestration
+Using the **design-agent-orchestration** plugin (**agent-role-design**, **task-decomposition**, **handoff-protocols**, **state-management**, **human-in-the-loop**, **failure-recovery**, **observability-design**):
+- Write the agent's role card: purpose, capabilities, knowledge scope, authority, boundaries.
+- Define every handoff — to humans, tools, or other agents — even for a single agent.
+- Specify state, human intervention points, failure recovery, and what must be observable.
+## Step 6: Voice
+Using the **system-behavior-shaping** plugin (**persona-architecture**, **tone-calibration**, **error-personality**, **emotional-design**, **domain-voice**, **behavioural-consistency**, **cultural-adaptation**):
+- Define the persona and how tone shifts across success, uncertainty, and error.
+- Write the error personality and check voice stays consistent across contexts.
+## Step 7: Reconcile Across Layers
+- Surface conflicts between layers (e.g. a guardrail that breaks the interaction loop, a persona that undercuts trust calibration).
+- Resolve each conflict explicitly and note the trade-off made.
+## Output
+Deliver a complete new-agent design brief:
+1. Agent frame (purpose, users, stakes, single vs. multi-agent)
+2. Interaction design (turn-taking, initiative, core loop)
+3. Prompt architecture (system prompt structure, constraints, reasoning)
+4. Evaluation plan (failure taxonomy, success metrics, quality rubric)
+5. Alignment plan (harms, guardrails, values, escalation, transparency)
+6. Orchestration design (role card, handoffs, state, human-in-the-loop, recovery, observability)
+7. Voice specification (persona, tone, error personality)
+8. Cross-layer reconciliation notes, and a per-layer coverage checklist marking each layer applied or explicitly deferred with a reason.
