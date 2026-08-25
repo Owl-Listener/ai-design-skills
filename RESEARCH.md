@@ -271,6 +271,48 @@ The translations here involve one or more of these moves:
 
 ---
 
+### AI Assurance and Lifecycle Decision-Making
+
+#### Porter et al. (2024) — *A Principles-Based Ethics Assurance Argument Pattern for AI and Autonomous Systems*
+
+**Core contribution.** Develops assurance cases for AI as structured, challengeable arguments: claims are bounded by an operating context, connected through explicit reasoning, and supported by evidence. The method is intended to communicate justified confidence while making the basis of that confidence available for review.
+
+**Translation moves.** The assurance-case structure is adapted from broad claims about ethical acceptability to a narrower product-design decision: whether a specific AI experience should proceed in a stated context. Claims, evidence, and context become a claims–evidence–defeaters matrix. The skill adds explicit decision states, evidence-quality dimensions, and operational invalidation so the artefact supports a release review rather than implying certification.
+
+**Translation type.** Problem reframing + artefact creation.
+
+**Skill and command informed.**
+- [`experience-assurance-case`](./skills/evaluation/experience-assurance-case/SKILL.md) — Defines the anatomy, evidence standards, countercase, decision states, and anti-patterns for an experience-level assurance case.
+- [`build-assurance-case`](./commands/evaluation/build-assurance-case.md) — Turns the argument pattern into a repeatable decision workflow and a concrete review artefact.
+
+---
+
+#### Raji et al. (2020) — *Closing the AI Accountability Gap*
+
+**Core contribution.** Proposes an end-to-end internal algorithmic auditing framework in which each lifecycle stage produces documentation that contributes to an overall audit report. The framework connects organisational values, development decisions, assigned responsibilities, and post-deployment review rather than treating evaluation as a one-off model test.
+
+**Translation moves.** Lifecycle documentation becomes a provenance-bearing evidence register. Named stage owners become owners for evidence, release conditions, and operational triggers. The audit trail is narrowed to the artefacts a cross-functional product team needs to justify and revisit one experience decision.
+
+**Translation type.** Selective synthesis + artefact creation.
+
+**Skill informed.**
+- [`experience-assurance-case`](./skills/evaluation/experience-assurance-case/SKILL.md) — Evidence provenance, decision ownership, dated review, and the requirement that new operational evidence can overturn the original decision.
+
+---
+
+#### NIST (2023) — *Artificial Intelligence Risk Management Framework 1.0*
+
+**Core contribution.** Frames AI risk management as continuous work across Govern, Map, Measure, and Manage. The Manage function includes determining whether a system achieves its intended purposes and whether development or deployment should proceed, while the framework as a whole emphasises lifecycle-wide reassessment as context and risks change.
+
+**Translation moves.** The framework's proceed decision becomes four explicit product states: proceed, proceed conditionally, do not proceed, and defer for insufficient evidence. Continuous risk management becomes an operational invalidation plan that names signals, triggers, actions, owners, and changes that force re-review. The command deliberately does not present the framework as a checklist or claim regulatory conformity.
+
+**Translation type.** Operationalisation + problem reframing.
+
+**Command informed.**
+- [`build-assurance-case`](./commands/evaluation/build-assurance-case.md) — Decision logic, lifecycle scope, and operational invalidation.
+
+---
+
 ## Skills Without Direct Paper Attribution
 
 Several skills draw primarily from practitioner synthesis, classical HCI literature, or Google PAIR / NNGroup practitioner research rather than the academic papers documented above. These are not less rigorous — they represent the practitioner knowledge layer, the implementation-tested conventions that don't yet have systematic academic treatment.
@@ -327,6 +369,7 @@ Skills to papers, for tracing any skill back to its research foundation.
 | `longitudinal-measurement` | evaluation | Mertsiotaki et al. (2025) |
 | `failure-taxonomy` | evaluation | Mertsiotaki et al. (2025); Wang J. et al. (2024) |
 | `heuristic-evaluation-ai` | evaluation | Nielsen (1994) adapted; practitioner synthesis |
+| `experience-assurance-case` | evaluation | Porter et al. (2024); Raji et al. (2020); NIST AI RMF (2023) |
 | `handoff-protocols` | design-agent-orchestration | Renney et al. (2026) |
 | `failure-recovery` | design-agent-orchestration | Renney et al. (2026) |
 | `agent-role-design` | design-agent-orchestration | Zhou et al. (2026) |
