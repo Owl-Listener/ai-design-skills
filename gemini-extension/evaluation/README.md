@@ -23,6 +23,7 @@ gemini extensions link ./gemini-extension/evaluation
 | Skill | File |
 |-------|------|
 | comparative-evaluation | `skills/comparative-evaluation/SKILL.md` |
+| experience-assurance-case | `skills/experience-assurance-case/SKILL.md` |
 | failure-taxonomy | `skills/failure-taxonomy/SKILL.md` |
 | heuristic-evaluation-ai | `skills/heuristic-evaluation-ai/SKILL.md` |
 | longitudinal-measurement | `skills/longitudinal-measurement/SKILL.md` |
@@ -36,6 +37,7 @@ Invoke from within Gemini CLI:
 
 | Command | File |
 |---------|------|
+| `/evaluation:build-assurance-case` | `commands/build-assurance-case.toml` |
 | `/evaluation:create-rubric` | `commands/create-rubric.toml` |
 | `/evaluation:design-benchmark` | `commands/design-benchmark.toml` |
 | `/evaluation:run-evaluation` | `commands/run-evaluation.toml` |

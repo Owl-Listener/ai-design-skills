@@ -10,9 +10,11 @@ Measure AI output quality, user satisfaction, task success, and design effective
 | heuristic-evaluation-ai | Adapting Nielsen's heuristics and new AI-specific heuristics for AI interfaces. |
 | longitudinal-measurement | Tracking AI product quality over time: drift, degradation, and improvement. |
 | failure-taxonomy | Classifying AI failures: hallucination, refusal, irrelevance, tone mismatch, latency. |
+| experience-assurance-case | Building a challengeable claims-and-evidence case for whether an AI experience should proceed, pause, or change. |
 ## Commands
 | Command | Description |
 |---------|-------------|
 | `/evaluation:create-rubric` | Build a scoring rubric for evaluating AI output quality. |
 | `/evaluation:run-evaluation` | Execute a structured evaluation of an AI feature against defined criteria. |
 | `/evaluation:design-benchmark` | Design a benchmark suite to measure AI product performance over time. |
+| `/evaluation:build-assurance-case` | Build an evidence-backed case for whether an AI experience should proceed, proceed conditionally, stop, or await evidence. |

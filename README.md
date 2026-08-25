@@ -10,7 +10,7 @@
 
 Agentic skills, commands, and plugins for designing AI products — from interaction patterns to alignment, evaluation, agent orchestration, and prompt architecture.
 
-**44 skills** and **18 commands** across **6 plugins**, available for both [Claude Code](https://docs.anthropic.com/en/docs/claude-code) and [Gemini CLI](https://github.com/google-gemini/gemini-cli). Same skills, same shape, both supported as first-class agents.
+**45 skills** and **19 commands** across **6 plugins**, available for both [Claude Code](https://docs.anthropic.com/en/docs/claude-code) and [Gemini CLI](https://github.com/google-gemini/gemini-cli). Same skills, same shape, both supported as first-class agents.
 
 ---
 
@@ -18,7 +18,7 @@ Agentic skills, commands, and plugins for designing AI products — from interac
 
 Agentic Experience Design (AXD) is a new discipline. It has its own vocabulary, definitions, and practices, and it is emerging in real time. *Mixed-initiative flow. Harm anticipation. Handoff protocol. Error personality.* These are real, useful, often-academic terms. They have not yet been collected into a form designers can reach for in real work.
 
-This repo is the collection. Six plugins, mapped to six layers of the discipline: *model interaction, alignment reasoning, system behaviour, evaluation, agent orchestration, prompt architecture.* Inside each, seven skills and three commands your AI agent can load when you are designing or auditing agentic experiences. The work in the underlying ideas was done by alignment researchers and HCI scholars over the last three years; the translation into installable skills is the contribution. [`REFERENCES.md`](./REFERENCES.md) lists the source papers. [`RESEARCH.md`](./RESEARCH.md) makes the translation explicit — for each paper, what was adopted, what was reframed, and how the academic concept became the practitioner skill.
+This repo is the collection. Six plugins, mapped to six layers of the discipline: *model interaction, alignment reasoning, system behaviour, evaluation, agent orchestration, prompt architecture.* Each contains a focused set of skills and commands your AI agent can load when you are designing or auditing agentic experiences. The work in the underlying ideas was done by alignment researchers and HCI scholars over the last three years; the translation into installable skills is the contribution. [`REFERENCES.md`](./REFERENCES.md) lists the source papers. [`RESEARCH.md`](./RESEARCH.md) makes the translation explicit — for each paper, what was adopted, what was reframed, and how the academic concept became the practitioner skill.
 
 ---
 
@@ -115,7 +115,7 @@ When you ask your agent a question, it matches your wording against the `descrip
 | `model-interaction-design` | How humans and agents take turns | 8 | 3 |
 | `ai-alignment-reasoning` | Outside-of-the-model alignment work | 8 | 3 |
 | `system-behavior-shaping` | How the agent shows up — persona, tone, error personality | 7 | 3 |
-| `evaluation` | Failure taxonomies, output rubrics, agent-specific heuristics | 7 | 3 |
+| `evaluation` | Failure taxonomies, output rubrics, agent-specific heuristics | 8 | 4 |
 | `design-agent-orchestration` | Multi-agent role design, handoffs, observability | 7 | 3 |
 | `prompt-architecture` | Chain-of-thought, constraint specification, system prompts | 7 | 3 |
 
@@ -128,7 +128,7 @@ Each plugin has its own `README.md` with a full skill-by-skill table.
 The skills are translations of academic and industry work into a form coding agents can use.
 
 - [`REFERENCES.md`](./REFERENCES.md) — Full bibliography: every paper and resource that informed the collection.
-- [`RESEARCH.md`](./RESEARCH.md) — Research-to-practice mappings: for each paper, the core academic contribution, the translation moves made to turn it into a practitioner skill, and a cross-reference index of all 44 skills back to their source papers. Start here if you are a researcher studying the gap between HCI scholarship and practitioner tools, or a practitioner who wants to trace a skill to its academic source.
+- [`RESEARCH.md`](./RESEARCH.md) — Research-to-practice mappings: for each paper, the core academic contribution, the translation moves made to turn it into a practitioner skill, and a cross-reference index of all 45 skills back to their source papers. Start here if you are a researcher studying the gap between HCI scholarship and practitioner tools, or a practitioner who wants to trace a skill to its academic source.
 
 ---
 

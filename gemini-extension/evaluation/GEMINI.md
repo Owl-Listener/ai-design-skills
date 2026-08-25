@@ -7,6 +7,7 @@ Measure AI output quality, user satisfaction, task success, and design effective
 The following skills are available. Use them when designing AI products within this domain.
 
 @./skills/comparative-evaluation/SKILL.md
+@./skills/experience-assurance-case/SKILL.md
 @./skills/failure-taxonomy/SKILL.md
 @./skills/heuristic-evaluation-ai/SKILL.md
 @./skills/longitudinal-measurement/SKILL.md
@@ -16,6 +17,7 @@ The following skills are available. Use them when designing AI products within t
 
 ## Commands
 
+- `/evaluation:build-assurance-case`
 - `/evaluation:create-rubric`
 - `/evaluation:design-benchmark`
 - `/evaluation:run-evaluation`
