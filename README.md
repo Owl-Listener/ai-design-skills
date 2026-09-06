@@ -10,7 +10,7 @@
 
 Agentic skills, commands, and plugins for designing AI products — from interaction patterns to alignment, evaluation, agent orchestration, and prompt architecture.
 
-**44 skills** and **18 commands** across **6 plugins**, available for both [Claude Code](https://docs.anthropic.com/en/docs/claude-code) and [Gemini CLI](https://github.com/google-gemini/gemini-cli). Same skills, same shape, both supported as first-class agents.
+**44 skills** and **18 commands** across **6 plugins**, available for [Codex](https://developers.openai.com/codex/skills), [Claude Code](https://docs.anthropic.com/en/docs/claude-code) and [Gemini CLI](https://github.com/google-gemini/gemini-cli). All three use the same canonical content; Codex exposes commands as workflow skills.
 
 ---
 
@@ -43,6 +43,33 @@ for p in model-interaction-design ai-alignment-reasoning system-behavior-shaping
 done
 ```
 
+### Codex
+
+Clone the repository and link the generated skills into `~/.agents/skills` (requires Python 3.9+):
+
+```bash
+git clone https://github.com/Owl-Listener/ai-design-skills
+cd ai-design-skills
+python3 scripts/install_codex.py
+```
+
+This installs all 44 knowledge skills and 18 command workflows. To install one collection, including its workflow dependencies:
+
+```bash
+python3 scripts/install_codex.py model-interaction-design
+```
+
+The installer creates one symlink per skill and refuses to overwrite existing skills. Re-running it for the same checkout is safe. Keep the checkout in place; pulling updates refreshes the linked skills. For project-only installation, pass `--dest /path/to/project/.agents/skills`. To uninstall, remove only the symlinks created by this installer from the destination.
+
+Codex can select skills automatically or you can invoke one by name. The command workflows use native Codex skill invocation instead of Claude/Gemini slash commands:
+
+```text
+$design-conversation Design an onboarding conversation for a travel assistant.
+$audit-prompt Review the system prompt below for a customer support assistant.
+```
+
+Use `/skills` to check discovery; restart Codex if newly installed skills do not appear. See the [Codex skills documentation](https://developers.openai.com/codex/skills).
+
 ### Gemini CLI
 
 Gemini CLI installs one extension per directory and expects the manifest at the install source's root, so for this monorepo, clone and install each extension from its local path.
@@ -65,15 +92,15 @@ For development (symlink instead of copy, so edits take effect immediately):
 gemini extensions link ./gemini-extension/model-interaction-design
 ```
 
-Both agents load skills the same way: each skill has a `description` field in its frontmatter, the agent matches your wording against those descriptions, and the relevant skill loads automatically. You do not pick the skill — the agent does.
+All three agents discover skills from their metadata: each skill has a `description` field in its frontmatter, the agent matches your wording against those descriptions, and the relevant skill loads automatically. You can also explicitly select a skill when needed.
 
 ---
 
 ## First time using a CLI agent?
 
-If you have not used either Claude Code or Gemini CLI before, the path is short.
+If you have not used Codex, Claude Code, or Gemini CLI before, the path is short.
 
-1. Pick an agent. Both work with this skill set; both are well-documented; both are free for personal use. Set-up instructions for [Claude Code](https://docs.anthropic.com/en/docs/claude-code) and [Gemini CLI](https://github.com/google-gemini/gemini-cli).
+1. Pick an agent. All three work with this skill set. Follow the setup instructions and check the access requirements for [Codex](https://developers.openai.com/codex/quickstart), [Claude Code](https://docs.anthropic.com/en/docs/claude-code) and [Gemini CLI](https://github.com/google-gemini/gemini-cli).
 2. Open a terminal in any project folder.
 3. Run the install command for your agent (above).
 4. From then on, the agent will load the relevant skills automatically when you ask agentic-experience-design questions.
