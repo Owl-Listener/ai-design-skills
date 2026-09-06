@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Materialize the Claude and Gemini agent layers from canonical sources.
+"""Materialize the Claude, Gemini, and Codex agent layers from canonical sources.
 
 Single source of truth lives at the repo root:
   skills/<plugin>/<skill-name>/SKILL.md
@@ -10,6 +10,7 @@ This script regenerates everything else:
   claude-plugin/<plugin>/commands/<command-name>.md       (file copy)
   gemini-extension/<plugin>/skills/<skill-name>/SKILL.md  (file copy)
   gemini-extension/<plugin>/commands/<command-name>.toml  (generated; see below)
+  codex-skills/<plugin>/<skill-or-command>/SKILL.md       (copy or wrapper)
 
 Why copies instead of symlinks: Claude's plugin install does not preserve
 symlinks that point outside the plugin source directory; the cache ends up
@@ -28,6 +29,7 @@ Gemini command TOML conversion is mechanical:
 
 from __future__ import annotations
 
+import json
 import re
 import shutil
 import sys
@@ -38,6 +40,7 @@ SKILLS_SRC = ROOT / "skills"
 COMMANDS_SRC = ROOT / "commands"
 CLAUDE_DST = ROOT / "claude-plugin"
 GEMINI_DST = ROOT / "gemini-extension"
+CODEX_DST = ROOT / "codex-skills"
 
 FRONTMATTER_RE = re.compile(r"\A---\n(.*?)\n---\n(.*)\Z", re.DOTALL)
 DESC_RE = re.compile(r"^description:\s*(.*?)\s*$", re.MULTILINE)
@@ -76,6 +79,25 @@ def md_to_toml(src_md: Path) -> str:
     )
 
 
+def md_to_codex_skill(src_md: Path) -> str:
+    """Expose a command as a native Codex skill, retaining its workflow and hint."""
+    match = FRONTMATTER_RE.match(src_md.read_text(encoding="utf-8"))
+    if not match:
+        raise SystemExit(f"{src_md}: no YAML frontmatter found")
+    frontmatter, body = match.groups()
+    desc_match = DESC_RE.search(frontmatter)
+    if not desc_match:
+        raise SystemExit(f"{src_md}: no 'description:' field in frontmatter")
+    description = desc_match.group(1).strip().strip('"').strip("'")
+    hint = re.search(r"^argument-hint:\s*(.*?)\s*$", frontmatter, re.MULTILINE)
+    target = hint.group(1).strip().strip('"').strip("'") if hint else "task context"
+    return (
+        f"---\nname: {src_md.stem}\ndescription: {json.dumps(description)}\n---\n"
+        f"Use the user's request as the input: {target}.\n\n"
+        f"{body}"
+    )
+
+
 def replace_dir(target: Path, source: Path) -> None:
     """Atomically replace target dir contents with a copy of source."""
     if target.exists() or target.is_symlink():
@@ -92,6 +114,19 @@ def build_plugin(plugin: str) -> tuple[int, int]:
 
     skill_count = sum(1 for _ in skills_src.glob("*/SKILL.md"))
     command_count = sum(1 for _ in commands_src.glob("*.md"))
+
+    # Codex discovers both knowledge skills and command workflows as SKILL.md.
+    collisions = {p.name for p in skills_src.iterdir()} & {
+        p.stem for p in commands_src.glob("*.md")
+    }
+    if collisions:
+        raise SystemExit(f"{plugin}: skill/command name collision: {sorted(collisions)}")
+    codex_dir = CODEX_DST / plugin
+    replace_dir(codex_dir, skills_src)
+    for src_md in sorted(commands_src.glob("*.md")):
+        target = codex_dir / src_md.stem
+        target.mkdir()
+        (target / "SKILL.md").write_text(md_to_codex_skill(src_md), encoding="utf-8")
 
     # Claude layer: file copies of skills/ and commands/.
     replace_dir(CLAUDE_DST / plugin / "skills", skills_src)
@@ -127,7 +162,7 @@ def main() -> int:
     print(
         f"built {len(plugins)} plugins: "
         f"{total_skills} skills, {total_commands} commands "
-        f"(claude-plugin/ + gemini-extension/)",
+        f"(claude-plugin/ + gemini-extension/ + codex-skills/)",
         file=sys.stderr,
     )
     return 0

@@ -17,8 +17,8 @@ if git diff --cached --name-only | grep -qE '^(skills/|commands/|scripts/build\.
     fi
     python3 scripts/build.py
     # Stage anything the script changed under the materialised layers.
-    if ! git diff --quiet -- claude-plugin/ gemini-extension/; then
-        git add claude-plugin/ gemini-extension/
-        echo "pre-commit: rebuilt claude-plugin/ and gemini-extension/ and added the changes" >&2
+    if [[ -n "$(git status --porcelain --untracked-files=all -- claude-plugin/ gemini-extension/ codex-skills/)" ]]; then
+        git add claude-plugin/ gemini-extension/ codex-skills/
+        echo "pre-commit: rebuilt claude-plugin/, gemini-extension/, and codex-skills/ and added the changes" >&2
     fi
 fi

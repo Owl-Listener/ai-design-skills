@@ -3,7 +3,7 @@ Thanks for your interest in contributing! This collection is open to new skills,
 
 ## Repo layout
 
-There is one canonical copy of every skill and every command. The agent-specific layers (Claude Code plugins and Gemini CLI extensions) are **generated** from the canonical sources by `scripts/build.py` and committed.
+There is one canonical copy of every skill and every command. The agent-specific layers (Claude Code plugins, Gemini CLI extensions, and Codex skills) are **generated** from the canonical sources by `scripts/build.py` and committed.
 
 ```
 skills/<plugin>/<skill-name>/SKILL.md       # ◄ canonical skill (edit here)
@@ -22,9 +22,13 @@ gemini-extension/<plugin>/                  # Gemini CLI installable layer
 ├── skills/<skill-name>/SKILL.md            # generated copy of canonical skill
 └── commands/<command-name>.toml            # generated TOML wrapper of canonical command
 
-scripts/build.py                            # rebuilds claude-plugin/ + gemini-extension/
+codex-skills/<plugin>/<skill-or-command>/SKILL.md  # generated Codex skill or workflow
+
+scripts/build.py                            # rebuilds all three agent layers
+scripts/install_codex.py                    # links Codex skills without overwriting existing files
+scripts/test_codex.py                       # packaging and installation regression tests
 .githooks/pre-commit                        # auto-runs build.py when skills/ or commands/ changes
-.github/workflows/build-check.yml           # CI fails if either layer drifts from canonical
+.github/workflows/build-check.yml           # CI fails if any layer drifts from canonical
 ```
 
 The agent layers are file copies, not symlinks. Earlier iterations of this layout used symlinks, but `claude plugin install` does not preserve symlinks pointing outside the plugin source directory — the cache ends up empty for `skills/` and `commands/`. Materialised copies are the only layout that works against both local-directory and GitHub marketplace installs.
@@ -42,11 +46,11 @@ description: One-line description of the skill.
 ---
 ```
 
-Run the build script (or rely on the pre-commit hook) so the new skill propagates into both agent layers:
+Run the build script (or rely on the pre-commit hook) so the new skill propagates into all three agent layers:
 ```bash
 python3 scripts/build.py
 ```
-This regenerates `claude-plugin/<plugin>/skills/` and `gemini-extension/<plugin>/skills/`. Commit the regenerated files alongside the canonical source.
+This regenerates `claude-plugin/<plugin>/skills/`, `gemini-extension/<plugin>/skills/`, and `codex-skills/<plugin>/`. Commit the regenerated files alongside the canonical source.
 
 ## Adding a Command
 Commands are workflows (verbs). They chain multiple skills together to accomplish a task.
@@ -65,7 +69,7 @@ Run the build script (or rely on the pre-commit hook):
 ```bash
 python3 scripts/build.py
 ```
-This copies the `.md` into `claude-plugin/<plugin>/commands/` and generates `gemini-extension/<plugin>/commands/<command-name>.toml`. Commit the regenerated files alongside the source `.md`.
+This copies the `.md` into `claude-plugin/<plugin>/commands/` and generates `gemini-extension/<plugin>/commands/<command-name>.toml`. It also creates `codex-skills/<plugin>/<command-name>/SKILL.md`, adding a name and translating the argument hint into input guidance while preserving the workflow body. Codex workflows can be invoked with `$command-name` and remain eligible for automatic selection. Command names must not collide with skill names. Commit the regenerated files alongside the source `.md`.
 
 ## Adding a Plugin
 A plugin is a collection of related skills and commands.
@@ -75,16 +79,26 @@ A plugin is a collection of related skills and commands.
 4. Create `gemini-extension/<plugin>/gemini-extension.json` (with `name`, `version`, `description`, `contextFileName: "GEMINI.md"`).
 5. Add `gemini-extension/<plugin>/GEMINI.md` that `@`-includes every skill (`@./skills/<name>/SKILL.md`).
 6. Add `gemini-extension/<plugin>/README.md`.
-7. Run `python3 scripts/build.py` to materialise both agent layers' `skills/` and `commands/` from the canonical sources.
+7. Run `python3 scripts/build.py` to materialise all three agent layers from the canonical sources.
 8. Add the plugin to the root `.claude-plugin/marketplace.json` (`{ "name": "...", "source": "./claude-plugin/<plugin>" }`).
 9. Update the root `README.md` plugins table.
 
 ## Local setup
-Activate the pre-commit hook so both agent layers stay in sync automatically:
+Activate the pre-commit hook so all three agent layers stay in sync automatically:
 ```bash
 git config core.hooksPath .githooks
 ```
-The hook is a no-op if you don't touch `skills/`, `commands/`, or the build script. CI rejects any drift in `claude-plugin/` or `gemini-extension/`, so even contributors who skip the hook are caught before merge.
+The hook is a no-op if you don't touch `skills/`, `commands/`, or the build script. CI rejects any drift in `claude-plugin/`, `gemini-extension/`, or `codex-skills/`, so even contributors who skip the hook are caught before merge.
+
+Run the packaging tests before submitting a PR:
+
+```bash
+python3 -m unittest discover -s scripts -p 'test_*.py'
+python3 scripts/build.py
+git status --short
+```
+
+For Codex development, run `python3 scripts/install_codex.py` once. Rebuild after editing canonical content; the installed symlinks pick up the regenerated files. Do not edit generated files directly. The installer requires Python 3.9+ and supports `--dest` for isolated installation tests.
 
 ## Guidelines
 - Skills should contain original design thinking, not just summaries of existing frameworks.
